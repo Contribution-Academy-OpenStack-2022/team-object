@@ -22,6 +22,7 @@ from openstack.image.v2 import service_info as _si
 from openstack.image.v2 import task as _task
 from openstack import resource
 from openstack import utils
+from openstack.image.v2 import metadef_object as _metadef_object
 
 # Rackspace returns this for intermittent import errors
 _IMAGE_ERROR_396 = "Image cannot be imported. Error code: '396'"
@@ -841,3 +842,19 @@ class Proxy(_base_proxy.BaseImageProxy):
             when no resource can be found.
         """
         return self._get(_si.Import, require_id=False)
+
+    def create_metadef_object(self, metadef_namespace, **kwargs):
+        return self._create(_metadef_object.MetadefObject, metadef_namespace, **kwargs)
+
+    def metadef_objects(self, metadef_namespace, **query):
+        return self._list(_metadef_object.MetadefObject, metadef_namespace, **query)
+
+    def find_metadef_object(self, name_or_id, metadef_namespace, ignore_missing=True):
+        return self._find(_metadef_object.MetadefObject, name_or_id,
+                          metadef_namespace, ignore_missing=ignore_missing)
+
+    def get_metadef_object(self, metadef_object):
+        return self._get(_metadef_object.MetadefObject, metadef_object)
+
+    def delete_metadef_object(self, metadef_object, ignore_missing=True):
+        self._delete(_metadef_object.MetadefObject, metadef_object, ignore_missing=ignore_missing)
