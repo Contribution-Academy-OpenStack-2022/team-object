@@ -14,7 +14,7 @@ from openstack import resource
 
 class MetadefObject(resource.Resource):
     resources_key = 'objects'
-    base_path = '/metadefs/namespaces/%(namespaces_name)s/objects'
+    base_path = '/metadefs/namespaces/%(namespace)s/objects'
 
     # capabilities
     allow_create = True
@@ -28,7 +28,7 @@ class MetadefObject(resource.Resource):
     _store_unknown_attrs_as_properties = True
 
     _query_mapping = resource.QueryParameters(
-        "namespace",
+        "namespace_name",
         "name",
         "description",
         "properties",
@@ -39,7 +39,8 @@ class MetadefObject(resource.Resource):
         "updated_at",
     )
 
-    namespace = resource.Body("namespace")
+    namespace = resource.URI('namespace')
+    namespace_name = resource.Body("namespace_name")
     name = resource.Body("name")
     description = resource.Body("description")
     properties = resource.Body("properties")
