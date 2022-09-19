@@ -39,6 +39,10 @@ EXAMPLE = {
     },
     'required': [],
     'schema': '/v2/schemas/metadefs/object',
+<<<<<<< HEAD
+=======
+    'self': '/v2/metadefs/namespaces/OS::Compute::Quota/objects/CPU Limits',
+>>>>>>> 293d69e31c001a982725c3dd6b859f91047e8bd6
     'updated_at': '2014-09-19T18:20:56Z'
 }
 
