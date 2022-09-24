@@ -843,8 +843,21 @@ class Proxy(_base_proxy.BaseImageProxy):
         """
         return self._get(_si.Import, require_id=False)
 
-    def create_metadef_object(self, metadef_namespace, **kwargs):
-        return self._create(_metadef_object.MetadefObject, metadef_namespace, **kwargs)
+    def create_metadef_object(self, namespace, **attrs):
+        """Create a new object from namespace
+
+        :param namespace: The value can be the namespace of a object or a
+            :class:`~openstack.image.v2.metadef_namespace.MetadefNamespace` instance
+            that the member will be created for.
+        :param dict attrs: Keyword arguments which will be used to create
+            a :class:`~openstack.image.v2.metadef_object.MetadefObject`,
+            comprised of the properties on the Member class.
+
+        :returns: The results of member creation
+        :rtype: :class:`~openstack.image.v2.member.Member`
+        """
+        namespace_id = resource.Resource._get_id(namespace)
+        return self._create(_metadef_object.MetadefObject, namespace=namespace_id, **attrs)
 
     def metadef_objects(self, metadef_namespace, **query):
         return self._list(_metadef_object.MetadefObject, metadef_namespace, **query)

@@ -38,7 +38,6 @@ EXAMPLE = {
         }
     },
     'required': [],
-    'schema': '/v2/schemas/metadefs/object',
     'updated_at': '2014-09-19T18:20:56Z'
 }
 
@@ -62,7 +61,6 @@ class TestMetadefObject(base.TestCase):
         self.assertEqual(EXAMPLE['name'], sot.name)
         self.assertEqual(EXAMPLE['properties'], sot.properties)
         self.assertEqual(EXAMPLE['required'], sot.required)
-        self.assertEqual(EXAMPLE['schema'], sot.schema)
         self.assertEqual(EXAMPLE['updated_at'], sot.updated_at)
         self.assertDictEqual(
             {
