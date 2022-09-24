@@ -38,6 +38,7 @@ EXAMPLE = {
         }
     },
     'required': [],
+    'schema': '/v2/schemas/metadefs/object',
     'updated_at': '2014-09-19T18:20:56Z'
 }
 
